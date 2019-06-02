@@ -1,7 +1,7 @@
 #!/bin/bash
 path=/var/kns
-durl="http://192.168.1.4/cnkixhs/Urlpaper.php?action=get"
-uurl="http://192.168.1.4/cnkixhs/Upfile.php"
+durl="http://www.qxntr.cn/xhs/cnkixhs/Urlpaper.php?action=get"
+uurl="http://www.qxntr.cn/xhs/cnkixhs/Upfile.php"
 ckurls=`curl --connect-timeout 10 $durl 2>>$path/down.log`
 if [ ! -n "$ckurls" ];then
         exit 28
