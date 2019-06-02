@@ -1,5 +1,5 @@
 #!/bin/bash
-path=/tmp/kns
+path=/var/kns
 durl="http://192.168.1.4/cnkixhs/Urlpaper.php?action=get"
 uurl="http://192.168.1.4/cnkixhs/Upfile.php"
 ckurls=`curl --connect-timeout 10 $durl 2>>$path/down.log`
@@ -23,6 +23,17 @@ if [ $? -ne 0 ];then
 fi
 sleep 1
 done
+files=`ls $path/ | grep -v log`
+if [ ! -n "$files" ];then
+        exit 28
+fi
+for file in ${files[@]}
 #上传文件至服务器 
-curl --connect-timeout 10 -F "file=@$path/$fname" $uurl >/dev/null 2>>up.log
+do
+curl --connect-timeout 10 -F "file=@$path/$file" $uurl >/dev/null 2>>$path/up.log
+if [ $? -eq 0 ];then
+#上传成功删除本地文件
+	  rm -rf $path/$file
+fi
+done
 exit 0

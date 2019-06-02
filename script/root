@@ -1,4 +1,4 @@
 * * * * * bash /root/test.sh 
 * * * * * sleep 30 ;bash /root/test.sh
-* * * * * find /tmp/kns/ -type f \( -name "*.caj" -o -name "*.pdf" \) -cmin +2 |xargs rm -f
+#* * * * * find /tmp/kns/ -type f \( -name "*.caj" -o -name "*.pdf" \) -cmin +120 |xargs rm -f
 
